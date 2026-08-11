@@ -1,7 +1,7 @@
 package org.ysh.studentmanage.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.ysh.studentmanage.service.StudentService;
@@ -11,13 +11,13 @@ public class HomeController {
     private final StudentService studentService;
 
     @Autowired
-    public HomeController(StudentService studentService){
+    public HomeController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping("/")
-    public String listStudents(Model model){
-        model.addAttribute("students",studentService.findAll());
+    public String listStudents(Model model) {
+        model.addAttribute("students", studentService.findAll());
         return "student-list";
     }
 }
